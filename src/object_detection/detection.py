@@ -40,3 +40,6 @@ class Detection():
             'confidence': self.confidence,
             'created_at': self.created_at,
         }
+    
+    def is_person(self):
+        return self.label == 'person'

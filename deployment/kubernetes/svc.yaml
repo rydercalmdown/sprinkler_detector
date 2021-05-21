@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: simple-rtsp-object-detector
+  name: sprinkler-detector
 spec:
   ports:
     - port: 80
       targetPort: 8000
   selector:
-    app: simple-rtsp-object-detector
+    app: sprinkler-detector

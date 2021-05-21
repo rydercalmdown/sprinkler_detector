@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-rtsp-object-detector
+  name: sprinkler-detector
   labels:
-    app: simple-rtsp-object-detector
+    app: sprinkler-detector
 spec:
   selector:
     matchLabels:
-      app: simple-rtsp-object-detector
+      app: sprinkler-detector
   replicas: 1
   template:
     metadata:
       labels:
-        app: simple-rtsp-object-detector
+        app: sprinkler-detector
     spec:
       containers:
-      - name: simple-rtsp-object-detector
-        image: ryderdamen/simple-rtsp-object-detector:latest
+      - name: sprinkler-detector
+        image: localhost:32000/sprinkler-detector:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
@@ -24,11 +24,9 @@ spec:
         - name: STREAM_URI
           valueFrom:
             secretKeyRef:
-              name: simple-rtsp-object-detector
+              name: sprinkler-detector
               key: stream_uri
-        - name: FPS_LIMIT
-          value: "5"
         - name: DISPLAY_FPS
-          value: "10"
+          value: "1"
         - name: CONFIDENCE_THRESHOLD
-          value: "0.3"
+          value: "0.6"

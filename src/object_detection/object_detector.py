@@ -43,7 +43,7 @@ class ObjectDetector():
         time_difference = current_time - self.fps_start_time
         if time_difference > update_every_x_seconds:
             fps_actual = int(float(self.fps_running) / time_difference)
-            print('FPS: {}'.format(fps_actual))
+            print('FPS: {} - {}'.format(fps_actual, int(time.time())))
             self.fps_start_time = current_time
             self.fps_running = 0
         self.fps_running = self.fps_running + 1
